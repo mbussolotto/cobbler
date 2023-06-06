@@ -1,5 +1,5 @@
 # vim: ft=dockerfile
-#!BuildTag: cobbler-test-github:latest cobbler-test-github:suma-head cobbler-test-github:suma-head.%RELEASE%
+#!BuildTag: cobbler-test-github:suma-head cobbler-test-github:suma-head.%RELEASE%
 
 # WARNING! This is not in any way production ready. It is just for testing!
 FROM opensuse/leap:15.3
