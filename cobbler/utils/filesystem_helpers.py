@@ -253,7 +253,7 @@ def copyfileimage(src: str, image_location: str, dst: str) -> None:
     :param image_location: The location of the image.
     :param dst: The destination for the file.
     """
-    cmd = ["mcopy", "-i", image_location, src, dst]
+    cmd = ["mcopy", "-n", "-i", image_location, src, dst]
     try:
         logger.info('running: "%s"', cmd)
         subprocess.run(cmd, check=True)

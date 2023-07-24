@@ -341,9 +341,11 @@ class BuildIso:
         efi_name = self.efi_fallback_renames.get(grub_name, grub_name)
         esp_efi_boot = self._create_efi_boot_dir(esp_image_location)
         grub_binary = (
-                pathlib.Path(self.api.settings().bootloaders_dir) / "grub" / grub_name
+            pathlib.Path(self.api.settings().bootloaders_dir) / "grub" / grub_name
         )
-        filesystem_helpers.copyfileimage(str(grub_binary), esp_image_location, f"{esp_efi_boot}/{efi_name}")
+        filesystem_helpers.copyfileimage(
+            str(grub_binary), esp_image_location, f"{esp_efi_boot}/{efi_name}"
+        )
 
     def calculate_grub_name(self, desired_arch: Archs) -> str:
         """
@@ -354,7 +356,7 @@ class BuildIso:
         loader_formats = self.api.settings().bootloaders_formats
         grub_binary_names: Dict[str, str] = {}
 
-        for (loader_format, values) in loader_formats.items():
+        for loader_format, values in loader_formats.items():
             name = values.get("binary_name", None)
             if name is not None and isinstance(name, str):
                 grub_binary_names[loader_format.lower()] = name
