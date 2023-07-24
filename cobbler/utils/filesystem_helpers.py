@@ -346,9 +346,8 @@ def mkdirimage(path: pathlib.Path, image_location: str) -> None:
 
     path_parts = path.parts
     cmd = ["mmd", "-i", image_location, path]
-    path.mkdir(parents=True, exist_ok=True)
     try:
-        # Create all parent directories one by one
+        # Create all parent directories one by one inside the image
         for parent_directory in range(1, len(path_parts) + 1):
             cmd[-1] = "/".join(path_parts[:parent_directory])
             logger.info('running: "%s"', cmd)
