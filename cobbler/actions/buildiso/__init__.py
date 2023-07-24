@@ -422,7 +422,7 @@ class BuildIso:
         return str(esp)
 
     def _create_efi_boot_dir(self, esp_mountpoint: str) -> str:
-        efi_boot = pathlib.Path("::/EFI") / "BOOT"
+        efi_boot = pathlib.Path("EFI") / "BOOT"
         self.logger.info("Creating %s", efi_boot)
         filesystem_helpers.mkdirimage(efi_boot, esp_mountpoint)
         return str(efi_boot)
