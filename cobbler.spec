@@ -117,7 +117,7 @@
 %global __python %{__python3}
 
 Name:           cobbler
-Version:        3.4.0
+Version:        3.3.3
 Release:        1%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
