@@ -256,7 +256,7 @@ def copyfileimage(src: str, image_location: str, dst: str) -> None:
     cmd = ["mcopy", "-n", "-i", image_location, src, "::/" + dst]
     try:
         logger.info('running: "%s"', cmd)
-        subprocess.run(cmd, check=True)
+        utils.subprocess_call(cmd, shell=False)
     except subprocess.CalledProcessError as error:
         raise OSError(
             f"Error while copying file to image ({src} -> {dst}):\n{error.output}"
