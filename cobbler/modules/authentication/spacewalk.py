@@ -7,6 +7,7 @@ Any org_admin or kickstart_admin can get in.
 # SPDX-FileCopyrightText: Copyright 2007-2009, Red Hat, Inc and Others
 # SPDX-FileCopyrightText: Michael DeHaan <michael.dehaan AT gmail>
 
+import ssl
 from typing import TYPE_CHECKING
 from xmlrpc.client import Error, ServerProxy
 
@@ -113,10 +114,18 @@ def authenticate(api_handle: "CobblerAPI", username: str, password: str) -> bool
     if api_handle is None:
         raise CX("api_handle required. Please don't call this without it.")
     server = api_handle.settings().redhat_management_server
+    if api_handle.settings().redhat_management_server_use_localhost:
+        server = "localhost"
+
+    ssl_ctx = None
+    if api_handle.settings().redhat_management_server_ignore_certificate:
+        ssl_ctx = ssl.create_default_context()
+        ssl_ctx.check_hostname = False
+        ssl_ctx.verify_mode = ssl.CERT_NONE
     user_enabled = api_handle.settings().redhat_management_permissive
 
     spacewalk_url = f"https://{server}/rpc/api"
-    with ServerProxy(spacewalk_url, verbose=True) as client:
+    with ServerProxy(spacewalk_url, context=ssl_ctx, verbose=True) as client:
         if username == "taskomatic_user" or __looks_like_a_token(password):
             # The tokens are lowercase hex, but a password can also be lowercase hex, so we have to try it as both a
             # token and then a password if we are unsure. We do it this way to be faster but also to avoid any login

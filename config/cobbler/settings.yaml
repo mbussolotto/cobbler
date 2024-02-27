@@ -391,6 +391,16 @@ nopxe_with_triggers: true
 # authentication within Cobbler Web and Cobbler XMLRPC.
 redhat_management_server: "xmlrpc.rhn.redhat.com"
 
+# This setting is only used by the code that supports using Spacewalk/Satellite
+# authentication within Cobbler Web and Cobbler XMLRPC. Set an alternative XMLRPC
+# endpoint: if true, localhost would be used for Spacewalk/Satellite authentication
+redhat_management_server_use_localhost: false
+
+# This setting is only used by the code that supports using Spacewalk/Satellite
+# authentication within Cobbler Web and Cobbler XMLRPC. If true, SSL verification
+# would be disabled for Spacewalk/Satellite authentication
+redhat_management_server_ignore_certificate: false
+
 # If the key "modules.authentication.module" in this file is set to the value "authentication.spacewalk"
 # Satellite/Spacewalk's auth system is used. Cobbler does not allow user-based access into Cobbler Web and
 # Cobbler XMLRPC by default.

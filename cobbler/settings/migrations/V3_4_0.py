@@ -124,6 +124,8 @@ schema = Schema(
         Optional("redhat_management_permissive"): bool,
         Optional("redhat_management_server"): str,
         Optional("redhat_management_key"): str,
+        Optional("redhat_management_server_use_localhost"): bool,
+        Optional("redhat_management_server_ignore_certificate"): bool,
         Optional("register_new_installs"): bool,
         Optional("remove_old_puppet_certs_automatically"): bool,
         Optional("replicate_repo_rsync_options"): str,

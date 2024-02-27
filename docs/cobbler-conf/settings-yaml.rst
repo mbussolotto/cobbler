@@ -785,6 +785,22 @@ Cobbler XML-RPC.
 
 default: ``"xmlrpc.rhn.redhat.com"``
 
+redhat_management_server_use_localhost
+######################################
+
+This setting is only used by the code that supports using Spacewalk/Satellite authentication within Cobbler Web and Cobbler XMLRPC.
+Set an alternative XMLRPC endpoint: if true, localhost would be used for Spacewalk/Satellite authentication
+
+default: ``False``
+
+redhat_management_server_ignore_certificate
+###########################################
+
+This setting is only used by the code that supports using Spacewalk/Satellite authentication within Cobbler Web and Cobbler XMLRPC.
+If true, SSL verification would be disabled for Spacewalk/Satellite authentication
+
+default: ``False``
+
 redhat_management_key
 #####################
 
